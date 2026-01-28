@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#fff7ef" />
+  <title>Khay Thuk — ร้านขายของราคาน่ารัก</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- ฟอนต์นุ่ม ๆ (เปลี่ยนได้) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Background blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#home" aria-label="ไปหน้าแรก">
+        <span class="brand__mark">KT</span>
+        <span class="brand__text">
+          <strong>Khay Thuk</strong>
+          <small>minimal & warm shop</small>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a href="#shop">สินค้า</a>
+        <a href="#about">เกี่ยวกับ</a>
+        <a href="#faq">คำถาม</a>
+        <button class="btn btn--ghost nav__cart" id="openCartBtn" type="button" aria-haspopup="dialog" aria-controls="cartDrawer">
+          <span class="nav__cartIcon" aria-hidden="true">🧺</span>
+          <span>ตะกร้า</span>
+          <span class="pill" id="cartCount">0</span>
+        </button>
+      </nav>
+
+      <button class="iconBtn burger" id="burgerBtn" type="button" aria-label="เมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="container mobileNav" id="mobileNav" hidden>
+      <a href="#shop">สินค้า</a>
+      <a href="#about">เกี่ยวกับ</a>
+      <a href="#faq">คำถาม</a>
+      <button class="btn btn--soft w-full" id="openCartBtnMobile" type="button">
+        🧺 เปิดตะกร้า <span class="pill" id="cartCountMobile">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home">
+    <section class="hero container">
+      <div class="hero__left">
+        <div class="badge">
+          <span aria-hidden="true">✨</span>
+          <span>ของดี • ราคาน่ารัก • ส่งไว</span>
+        </div>
+        <h1>ช้อปแบบสบายตา<br />แต่ได้ของถูกใจ 💛</h1>
+        <p class="muted">
+          Khay Thuk รวมของ/บริการยอดนิยมแบบคัดมาแล้ว เน้นใช้ง่าย ราคาเบา ๆ
+          พร้อมตะกร้าและหน้ารายละเอียดสินค้าแบบมินิมอล
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#shop">เริ่มช้อปเลย</a>
+          <button class="btn btn--ghost" id="themeToggleBtn" type="button" aria-label="สลับโทนสี">
+            เปลี่ยนโทน 🎨
+          </button>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <div class="stat__num" id="statProducts">0</div>
+            <div class="stat__label">รายการสินค้า</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">24/7</div>
+            <div class="stat__label">รับออเดอร์</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">★ 4.9</div>
+            <div class="stat__label">รีวิวเฉลี่ย</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__right" aria-hidden="true">
+        <div class="heroCard">
+          <div class="heroCard__top">
+            <div class="miniIcon">🍑</div>
+            <div class="miniIcon">🧸</div>
+            <div class="miniIcon">🌿</div>
+          </div>
+          <div class="heroCard__title">Warm Minimal UI</div>
+          <div class="heroCard__sub">Product grid + cart drawer + modal</div>
+          <div class="heroCard__chips">
+            <span class="chip">ค้นหา</span>
+            <span class="chip">หมวดหมู่</span>
+            <span class="chip">ตะกร้า</span>
+            <span class="chip">FAQ</span>
+          </div>
+        </div>
+
+        <div class="floating">
+          <div class="floating__bubble">ลดวันนี้ 🎁</div>
+          <div class="floating__bubble">คัดของน่ารัก 🫶</div>
+          <div class="floating__bubble">จ่ายง่าย 💳</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section id="shop" class="section container">
+      <div class="section__head">
+        <div>
+          <h2>สินค้าแนะนำ</h2>
+          <p class="muted">ค้นหาง่าย เลือกหมวดได้ทันที กดดูรายละเอียดก่อนใส่ตะกร้า</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="search">
+          <span class="search__icon" aria-hidden="true">🔎</span>
+          <input id="searchInput" type="search" placeholder="ค้นหาสินค้า เช่น Netflix, เติมเงิน, บัตร..." autocomplete="off" />
+          <button class="iconBtn" id="clearSearchBtn" type="button" aria-label="ล้างคำค้น">✕</button>
+        </div>
+
+        <div class="select">
+          <label class="srOnly" for="sortSelect">เรียงสินค้า</label>
+          <select id="sortSelect">
+            <option value="recommended">แนะนำ</option>
+            <option value="newest">ใหม่ล่าสุด</option>
+            <option value="priceAsc">ราคาน้อยไปมาก</option>
+            <option value="priceDesc">ราคามากไปน้อย</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catRow" id="categoryChips" aria-label="หมวดหมู่สินค้า"></div>
+
+      <div class="grid" id="productGrid" aria-live="polite"></div>
+
+      <div class="empty" id="emptyState" hidden>
+        <div class="empty__icon" aria-hidden="true">🧁</div>
+        <h3>ไม่เจอสินค้าที่ค้นหา</h3>
+        <p class="muted">ลองเปลี่ยนคำค้น หรือเลือกหมวดหมู่อื่นดูนะ</p>
+        <button class="btn btn--soft" id="resetFiltersBtn" type="button">รีเซ็ตตัวกรอง</button>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section container">
+      <div class="twoCol">
+        <div class="card">
+          <h2>ทำไมต้อง Khay Thuk?</h2>
+          <ul class="list">
+            <li>🫶 ดีไซน์สบายตา เน้นใช้งานจริง</li>
+            <li>🧺 มีตะกร้า + เก็บรายการไว้ (localStorage)</li>
+            <li>🔍 ค้นหา/หมวดหมู่/เรียงสินค้า</li>
+            <li>📦 เตรียมพร้อมต่อยอดเชื่อมหลังบ้านได้</li>
+          </ul>
+          <div class="note">
+            <strong>ทิป:</strong> เปลี่ยนสินค้า/ราคา/สต๊อก ได้ในไฟล์ <code>app.js</code> ส่วนรูปสินค้าเป็น “การ์ดอาร์ต” อัตโนมัติ
+          </div>
+        </div>
+
+        <div class="card card--soft">
+          <h3>ช่องทางติดต่อ</h3>
+          <p class="muted">ใส่ลิงก์ติดต่อจริงของคุณตรงนี้ได้เลย</p>
+          <div class="contact">
+            <a class="btn btn--ghost w-full" href="#" onclick="return false;">💬 LINE: @khaythuk</a>
+            <a class="btn btn--ghost w-full" href="#" onclick="return false;">📱 Facebook: Khay Thuk</a>
+            <a class="btn btn--ghost w-full" href="#" onclick="return false;">📩 Email: hello@khaythuk.shop</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section container">
+      <div class="section__head">
+        <div>
+          <h2>คำถามที่พบบ่อย</h2>
+          <p class="muted">กดเพื่อเปิด/ปิดคำตอบ</p>
+        </div>
+      </div>
+
+      <div class="faq" id="faqList">
+        <!-- JS เติมให้ -->
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <div class="footer__left">
+        <div class="brand brand--small">
+          <span class="brand__mark">KT</span>
+          <span class="brand__text">
+            <strong>Khay Thuk</strong>
+            <small>made with warm minimal vibes</small>
+          </span>
+        </div>
+        <p class="muted">© <span id="year"></span> Khay Thuk. All rights reserved.</p>
+      </div>
+
+      <div class="footer__right">
+        <a href="#home">กลับขึ้นบน ⤴</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Product Modal -->
+  <dialog class="modal" id="productModal" aria-label="รายละเอียดสินค้า">
+    <form method="dialog" class="modal__box">
+      <button class="iconBtn modal__close" type="submit" aria-label="ปิด">✕</button>
+      <div class="modal__content">
+        <div class="modal__art" id="modalArt" aria-hidden="true"></div>
+        <div class="modal__info">
+          <div class="row">
+            <span class="tag" id="modalCategory">หมวด</span>
+            <span class="stock" id="modalStock">In stock</span>
+          </div>
+          <h3 id="modalTitle">ชื่อสินค้า</h3>
+          <p class="muted" id="modalDesc">รายละเอียด</p>
+
+          <div class="priceRow">
+            <div class="price" id="modalPrice">฿0</div>
+            <div class="muted small" id="modalMeta"></div>
+          </div>
+
+          <div class="modal__actions">
+            <button class="btn btn--primary" id="modalAddBtn" type="button">ใส่ตะกร้า</button>
+            <button class="btn btn--soft" type="submit">ปิดหน้าต่าง</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Cart Drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="cartDrawer" role="dialog" aria-label="ตะกร้าสินค้า" aria-modal="true" hidden>
+    <div class="drawer__head">
+      <div>
+        <h3>ตะกร้าของคุณ</h3>
+        <p class="muted small" id="cartHint">รายการจะถูกบันทึกไว้ในเครื่อง</p>
+      </div>
+      <button class="iconBtn" id="closeCartBtn" type="button" aria-label="ปิดตะกร้า">✕</button>
+    </div>
+
+    <div class="drawer__body">
+      <div class="cartList" id="cartList"></div>
+
+      <div class="cartEmpty" id="cartEmpty" hidden>
+        <div class="cartEmpty__icon" aria-hidden="true">🧺</div>
+        <p class="muted">ยังไม่มีสินค้าในตะกร้า</p>
+        <button class="btn btn--soft" id="goShopBtn" type="button">ไปเลือกสินค้า</button>
+      </div>
+    </div>
+
+    <div class="drawer__foot">
+      <div class="totalRow">
+        <span class="muted">รวม</span>
+        <strong id="cartTotal">฿0</strong>
+      </div>
+      <button class="btn btn--primary w-full" id="checkoutBtn" type="button">สรุปออเดอร์</button>
+      <button class="btn btn--ghost w-full" id="clearCartBtn" type="button">ล้างตะกร้า</button>
+    </div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+    <span id="toastText">เพิ่มลงตะกร้าแล้ว</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
